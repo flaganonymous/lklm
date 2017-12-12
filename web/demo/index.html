@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>DEMO</title>
+	<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+	<link rel="stylesheet" href="owl-carousel/owl.theme.css">
+	<style>
+
+		body {
+			margin: 0;
+			padding: 0;
+			background-image: url('img/2014092509210264.png');
+			background-repeat: no-repeat;
+			background-position: center top;
+			background-color: #f6f6f6;
+		}
+
+		#owl-example {
+			width: 320px;
+			height: 568px;
+			margin: 136px auto;
+		}
+
+		.back {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			font-family: 'Calibri';
+			font-size: 14px;
+			text-transform: uppercase;
+		}
+	
+	</style>
+</head>
+<body>
+	<a class="back" href="back.html">Back Office ></a>
+	<div id="owl-example" class="owl-carousel">
+		<img src="img/Scenario/New5/1.png" style="width:320px">
+		<img src="img/Scenario/New5/2.png" style="width:320px">
+		<img src="img/Scenario/New5/3.png" style="width:320px">
+		<img src="img/Scenario/New5/4.png" style="width:320px">
+		<img src="img/Scenario/New5/5.png" style="width:320px">
+		<img src="img/Scenario/New5/6.png" style="width:320px">
+		<img src="img/Scenario/New5/11.png" style="width:320px">
+		<img src="img/Scenario/New5/7.png" style="width:320px">
+		<img src="img/Scenario/New5/8.png" style="width:320px">
+		<img src="img/Scenario/New5/9.png" style="width:320px">
+		<img src="img/Scenario/New5/10.png" style="width:320px">
+	
+	</div>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="owl-carousel/owl.carousel.js"></script>
+	<script>
+
+		$("#owl-example").owlCarousel({
+			singleItem: true,
+			pagination: false
+		});
+
+		var owl = $("#owl-example").data('owlCarousel');
+
+		document.onkeydown = applyKey ;
+
+		KEY_LEFT	= 37;
+		KEY_RIGHT	= 39;
+
+		function checkEventObj ( _event_ ) {
+			// --- IE explorer
+			if ( window.event )
+				return window.event;
+			// --- Netscape and other explorers
+			else
+				return _event_;
+		}
+			
+		function applyKey (_event_) {
+			
+			// --- Retrieve event object from current web explorer
+			var winObj = checkEventObj(_event_);
+			
+			var intKeyCode = winObj.keyCode;
+			var intAltKey = winObj.altKey;
+			var intCtrlKey = winObj.ctrlKey;
+				
+			if ( intKeyCode == KEY_RIGHT ) {
+				
+				// --- Display Message
+				owl.next();
+				
+				// --- Map the keyCode in another keyCode not used
+				winObj.keyCode = intKeyCode = REMAP_KEY_T;
+				winObj.returnValue = false;
+				return false;
+			}
+
+			if ( intKeyCode == KEY_LEFT ) {
+				
+				owl.prev();
+				
+				// --- Map the keyCode in another keyCode not used
+				winObj.keyCode = intKeyCode = REMAP_KEY_T;
+				winObj.returnValue = false;
+				return false;
+			}
+				
+			
+		}
+
+	</script>
+</body>
+</html>

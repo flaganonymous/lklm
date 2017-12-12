@@ -1,0 +1,32 @@
+events:
+    type: rest
+    name_prefix: api_
+    resource: AppBundle\Controller\EventController
+ligne:
+    type: rest
+    name_prefix: api_
+    resource: AppBundle\Controller\NetworkController
+category:
+    type: rest
+    name_prefix: api_
+    resource: AppBundle\Controller\CategoryController
+stop:
+    type: rest
+    name_prefix: api_
+    resource: AppBundle\Controller\StopController
+line:
+    type: rest
+    name_prefix: api_
+    resource: AppBundle\Controller\LineController
+user:
+    type: rest
+    name_prefix: api_
+    resource: AppBundle\Controller\UserController
+task:
+    type: rest
+    name_prefix: api_
+    resource: AppBundle\Controller\TaskController
+information:
+    type: rest
+    name_prefix: api_
+    resource: AppBundle\Controller\InformationController

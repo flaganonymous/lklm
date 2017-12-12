@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
+{% block body %}
+<div class="columns small-12">
+    <h1>Tableau de bord SNCF</h1>
+    <div class="row">
+        <div class="columns small-12 text-right">
+            <h3>Période</h3>
+		    <a href="#" class="button small" id="dpstart" data-date-format="dd-mm-yyyy" data-date="{{start|date('d-m-Y')}}">{{start|date('d-m-Y')}}</a>
+			 - <a href="#" class="button small" id="dpend" data-date-format="dd-mm-yyyy" data-date="{{end|date('d-m-Y')}}">{{end|date('d-m-Y')}}</a>
+        </div>
+        <div class="columns small-3 small-offset-9 text-right">
+            <select id="lines">
+                <option value="all">Toutes les lignes</option>
+                {% for l in lines %}
+                    {% if l.name == line %}
+                    <option selected="selected" value="{{ l.id }}">{{ l.name }}</option>
+                    {% else %}
+                    <option value="{{ l.id }}">{{ l.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="alert alert-box"  style="display:none;" id="alert">	<strong>Oups</strong>
+    </div>
+    <div class="row align-spaced">
+        <div class="columns small-12 text-center chart">
+            <h3>Nombre d'actions par code</h3>
+            <div style="height:600px;">
+                <canvas id="codes" width="100%" height="300"></canvas>
+            </div>
+        </div>
+        <div class="columns small-12 medium-3 text-center chart">
+            <h3>Age</h3>
+            <div>
+                <canvas id="ages" width="100%" height="auto"></canvas>
+            </div>
+        </div>
+        <div class="columns small-12 medium-3 text-center chart">
+            <h3>Sexe</h3>
+            <div>
+                <canvas id="genders" width="100%" height="auto"></canvas>
+            </div>
+        </div>
+        <div class="columns small-12 medium-3 text-center chart">
+            <h3>Types d'action</h3>
+            <div>
+                <canvas id="actions" width="100%" height="auto"></canvas>
+            </div>
+        </div>
+        <div class="columns small-12 medium-3 text-center chart">
+            <h3>Durée</h3>
+            <div>
+                <canvas id="durations" width="100%" height="auto"></canvas>
+            </div>
+        </div>
+        <div class="columns small-12 medium-3 text-center chart">
+            <h3>Ambiance</h3>
+            <div>
+                <canvas id="moods" width="100%" height="auto"></canvas>
+            </div>
+        </div>
+        <div class="columns small-12 medium-3 text-center chart">
+            <h3>Actions</h3>
+            <div>
+                <canvas id="categories" width="100%" height="auto"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row align-center">
+        <a target="_blank" href="{{ path('download', {'network': 'TER', 'start': start|date('Y-m-d'), 'end': end|date('Y-m-d') }) }}" class="button"><i class="fa fa-download"></i> Télécharger les données</a>
+    </div>
+</div>
+
+<script>
+var codes = {{ codes|json_encode|raw }};
+var ages = {{ ages|json_encode|raw }};
+var genders = {{ genders|json_encode|raw }};
+var actions = {{ actions|json_encode|raw }};
+var durations = {{ durations|json_encode|raw }};
+var moods = {{ moods|json_encode|raw }};
+var categories = {{ categories|json_encode|raw }};
+// Month starts from zero in Javascript!
+var startDate = new Date({{ start|date('Y') }}, {{ start|date('m') - 1 }}, {{ start|date('d') }});
+var endDate = new Date({{ end|date('Y') }}, {{ end|date('m') - 1 }}, {{ end|date('d') }});
+</script>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('assets/js/sncf.js') }}"></script>
+{% endblock %}

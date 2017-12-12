@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}ONYXP{% endblock %}
+{% block body %}
+<div class="columns small-12 medium-6">
+    <h1>Administration</h1>
+    {% if app.user %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="button expanded" href="/admin" title="Accéder au panneau d'administration">Panneau d'administration</a>
+        {% endif %}
+        <!--{% if is_granted('ROLE_KEOLIS') or is_granted('ROLE_ADMIN') %}
+            <a class="button expanded" href="{{ path('keolis') }}" title="Accéder au tableau de bord">Tableau de bord{% if is_granted('ROLE_ADMIN') %} KEOLIS{% endif %}</a>
+        {% endif %}
+        {% if is_granted('ROLE_SNCF') or is_granted('ROLE_ADMIN') %}
+            <a class="button expanded" href="{{ path('sncf') }}" title="Accéder au tableau de bord">Tableau de bord{% if is_granted('ROLE_ADMIN') %} SNCF{% endif %}</a>
+        {% endif %}-->
+    {% else %}
+        <a class="button expanded" href="{{ path('fos_user_security_login') }}" title="Connexion">Connexion</a>
+    {% endif %}
+</div>
+{% endblock %}

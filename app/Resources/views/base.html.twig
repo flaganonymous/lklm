@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <header></header>
+        <div class="row align-center">
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% block javascripts %}
+        <script src="{{ asset('assets/manifest.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+    
+</html>

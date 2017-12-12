@@ -1,0 +1,15 @@
+@import '~foundation-sites/assets/foundation-flex';
+@import '~font-awesome/scss/font-awesome';
+@import '~foundation-datepicker/scss/foundation-datepicker';
+header {
+    background: url('img/logo.png') no-repeat 10% greenyellow;
+    height: 100%;
+    background-size:contain;
+    margin-top:10%;
+    width:100%;
+    margin-bottom: 3rem;
+}
+
+.chart {
+    margin-bottom: 4em;
+}

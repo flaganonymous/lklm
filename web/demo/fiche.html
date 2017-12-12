@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>BackOffice</title>
+	<link rel="stylesheet" href="lightbox.css">
+	<style>
+
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #f7f7f7;
+		}
+
+		.fond {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -650px;
+		}
+
+		.back {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			font-family: 'Calibri';
+			font-size: 14px;
+			text-transform: uppercase;
+		}
+
+		a.retour {
+			position: absolute;
+			top: 185px;
+			left: 50%;
+			margin-left: 300px;
+			width: 80px;
+			height: 35px;
+			z-index: 99999;
+		}
+
+		a.img {
+			position: absolute;
+			top: 390px;
+			left: 50%;
+			margin-left: 58px;
+			width: 50px;
+			height: 50px;
+			z-index: 99999;
+		}
+
+	</style>
+</head>
+<body>
+	<a class="back" href="index.html">< Appli</a>
+	<a class="retour" href="back.html"></a>
+	<a data-lightbox="PBORANGE" class="img" href="img/PBORANGE.jpg"></a>
+	<img class="fond" src="img/BACKOFFICE-MOCKUP-2.jpg">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="lightbox.js"></script>
+	<script>
+
+		$(document).ready(function() {
+		  $('.img').magnificPopup({type:'image'});
+		});
+
+	</script>
+</body>
+</html>

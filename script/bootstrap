@@ -1,0 +1,64 @@
+#!/bin/bash
+
+set -e
+
+cd "$(dirname $0)/.."
+
+echo "==> Checking prerequisites…"
+exit_code=0
+
+if hash php 2>/dev/null; then
+    echo "Php found: $(php --version)"
+else
+    echo "Php is required to run the project."
+    exit_code=1
+fi
+
+if hash npm 2>/dev/null; then
+    echo "NPM found: npm version $(npm --version), node version $(node --version)"
+else
+    echo "Node.js and NPM are required to build the project."
+    exit_code=1
+fi
+
+if hash yarn 2>/dev/null; then
+    echo "Yarn found: $(yarn --version)"
+else
+    echo "Yarn is required to run the project."
+    exit_code=1
+fi
+
+if hash composer 2>/dev/null; then
+    echo "composer found: $(composer --version)"
+else
+    echo "composer is required to run the project."
+    exit_code=1
+fi
+
+do_update=
+if [[ "$1" == "-u" ]]; then
+    do_update=1
+fi
+
+if ! [ -e var/jwt/private.pem ]; then
+    echo "==> Generating SSH keys"
+    mkdir -p var/jwt
+    openssl genrsa -out var/jwt/private.pem -aes256 4096
+    openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem
+    echo "SSH Keys generated, now copy your passphrase into parameters.yml"
+fi
+
+echo "==> Installing Php dependencies…"
+composer install
+
+echo "==> Installing NPM dependencies… ${do_update:+'(force update)'}"
+yarn install ${do_update:+'--force'}
+
+echo "==> Creating database…"
+php bin/console doctrine:database:create --if-not-exists
+
+echo "==> Update database schema…"
+php bin/console doctrine:schema:update --force
+
+
+exit $exit_code

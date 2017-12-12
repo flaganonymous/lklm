@@ -1,0 +1,532 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Event
+ *
+ * @ORM\Table(name="event")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
+ */
+class Event
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user", type="string", length=255)
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="network", type="string", length=255)
+     */
+    private $network;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="line", type="string", length=255)
+     */
+    private $line;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="stop", type="string", length=255)
+     */
+    private $stop;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=3)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codename", type="string", length=255)
+     */
+    private $codename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vehicule", type="string", length=255)
+     */
+    private $vehicule;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age", type="string", length=255, nullable=true)
+     */
+    private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", length=255)
+     */
+    private $gender;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mood", type="string", length=255, nullable=true)
+     */
+    private $mood;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="duration", type="string", length=255)
+     */
+    private $duration;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="text", nullable=true)
+     */
+    private $comment;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="action", type="text")
+     */
+    private $action;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="creation", type="datetime")
+     */
+    private $creation;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="altercation", type="boolean", nullable=true)
+     */
+    private $altercation;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="category", type="json_array", nullable=true)
+     */
+    private $category;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param string $user
+     *
+     * @return Event
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set network
+     *
+     * @param string $network
+     *
+     * @return Event
+     */
+    public function setNetwork($network)
+    {
+        $this->network = $network;
+
+        return $this;
+    }
+
+    /**
+     * Get network
+     *
+     * @return string
+     */
+    public function getNetwork()
+    {
+        return $this->network;
+    }
+
+    /**
+     * Set age
+     *
+     * @param string $age
+     *
+     * @return Event
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return string
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     *
+     * @return Event
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * Set mood
+     *
+     * @param string $mood
+     *
+     * @return Event
+     */
+    public function setMood($mood)
+    {
+        $this->mood = $mood;
+
+        return $this;
+    }
+
+    /**
+     * Get mood
+     *
+     * @return string
+     */
+    public function getMood()
+    {
+        return $this->mood;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param string $duration
+     *
+     * @return Event
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return string
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return Event
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set action
+     *
+     * @param string $action
+     *
+     * @return Event
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    /**
+     * Get action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * Set altercation
+     *
+     * @param boolean $altercation
+     *
+     * @return Event
+     */
+    public function setAltercation($altercation)
+    {
+        $this->altercation = $altercation;
+
+        return $this;
+    }
+
+    /**
+     * Get altercation
+     *
+     * @return boolean
+     */
+    public function getAltercation()
+    {
+        return $this->altercation;
+    }
+
+    /**
+     * Set creation
+     *
+     * @param \DateTime $creation
+     *
+     * @return Event
+     */
+    public function setCreation($creation)
+    {
+        $this->creation = $creation;
+
+        return $this;
+    }
+
+    /**
+     * Get creation
+     *
+     * @return \DateTime
+     */
+    public function getCreation()
+    {
+        return $this->creation;
+    }
+
+    /**
+     * Set line
+     *
+     * @param string $line
+     *
+     * @return Event
+     */
+    public function setLine($line)
+    {
+        $this->line = $line;
+
+        return $this;
+    }
+
+    /**
+     * Get line
+     *
+     * @return string
+     */
+    public function getLine()
+    {
+        return $this->line;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return Event
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set codename
+     *
+     * @param string $codename
+     *
+     * @return Event
+     */
+    public function setCodename($codename)
+    {
+        $this->codename = $codename;
+
+        return $this;
+    }
+
+    /**
+     * Get codename
+     *
+     * @return string
+     */
+    public function getCodename()
+    {
+        return $this->codename;
+    }
+
+    /**
+     * Set vehicule
+     *
+     * @param string $vehicule
+     *
+     * @return Event
+     */
+    public function setVehicule($vehicule)
+    {
+        $this->vehicule = $vehicule;
+
+        return $this;
+    }
+
+    /**
+     * Get vehicule
+     *
+     * @return string
+     */
+    public function getVehicule()
+    {
+        return $this->vehicule;
+    }
+
+    /**
+     * Set stop
+     *
+     * @param string $stop
+     *
+     * @return Event
+     */
+    public function setStop($stop)
+    {
+        $this->stop = $stop;
+
+        return $this;
+    }
+
+    /**
+     * Get stop
+     *
+     * @return string
+     */
+    public function getStop()
+    {
+        return $this->stop;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Event
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+ 
+     /**
+      * Get category
+      *
+      * @return string
+      */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}
